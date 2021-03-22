@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #5d5d5d;
+    font-size: 10px;
+}
+
+.heading {
+    display: flexbox;
+    font-family: 'Chango', cursive;
+    background-image: linear-gradient(to bottom, rgb(243, 220, 87), #724000fb);
+    height: 15vh;
+    width: auto;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    color: #c50707;
+    text-shadow: -2px 3px 0 #3f3636;
+    font-size: 3.5rem;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: .5rem;
+    margin: 1rem 8rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: rgb(32, 42, 42);
+    color: ghostwhite;
+}
+
+.game-zone {
+    display: flex;
+    height: 70vh;
+    width: auto;
+    background: url("https://images.pexels.com/photos/440731/pexels-photo-440731.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: cover;
+    background-position: bottom;
+    margin: auto;
+}
+
+.player-container {
+    display: flex;
+    width: 100vw;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 1rem 2rem;
+}
+
+.bunny {
+    display: flex;
+    height: 25rem;
+}
+
+.your-fighter {
+    display: flex;
+    height: 25rem;
+}
+
+.fireball {
+    height: 15rem;
+    width: auto;
+    transform: rotate(180deg);
+    position: fixed;
+    right: 5rem;
+    bottom: 20rem;
+}
+
+.health-display {
+    display: flex;
+    flex-wrap: wrap;
+    height: 15vh;
+    width: auto;
+    background-image: linear-gradient(to top, rgb(13, 14, 15), #323353fb);
+    justify-content: space-between;
+}
+.villian-health {
+display: flexbox;
+}
+
+.villian-health-stats {
+    color: ghostwhite;
+}
+
+.label-villian-strength {
+    font-size: 1rem;
+}
+
+.hero-health {
+display: flexbox;
+}
+
+h3 {
+    font-size: 2.5rem;
+    color: ghostwhite;
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+.health-bar {
+    display: flexbox;
+    height: 2rem;
+    width: 25rem;
+    background: red;
+    margin: auto;
+}
+
