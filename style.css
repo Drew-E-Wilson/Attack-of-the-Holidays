@@ -110,16 +110,47 @@ button {
 }
 
 .second-round-modal{
+    background: ghostwhite;
+    display: flexbox;
+    position: fixed;
+    padding: 2rem;
+    height: 18rem;
+    width: 35rem;
+    text-align: center;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: 2px solid black;
+    background-image: linear-gradient(to top, rgb(67, 89, 110), #1b1c2cfb);
+    /* z-index: 1000; */
     display: none;
+}
+
+.second-round-modal p {
+    font-size: 1.6rem;
+    color: ghostwhite;
+}
+
+.second-round-modal h6 {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+    background: #b66d0dfb;
+}
+
+.second-round-modal div {
+    margin-top: 2rem;
+    display: flexbox;
+    justify-content: center;
+}
+
+.second-round-modal.open {
+    display: block;
 }
 
 .third-round-modal {
     display: none;
-}
-
-.start-game-modal-button{
-    display: flexbox;
-    position: relative;
 }
 
 .player-container {

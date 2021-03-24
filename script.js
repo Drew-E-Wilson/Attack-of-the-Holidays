@@ -21,7 +21,8 @@ const villainHealthGroup = document.querySelector(".villain-health");
 const heroHealthGroup = document.querySelector(".hero-health");
 const buttonGroup = document.querySelector(".attack-button-container");
 const letsBeginText = document.querySelector(".save-the-world");
-
+const secondRoundModal =document.querySelector(".second-round-modal");
+const secondRoundButton = document.querySelector(".second-round-modal button");
 
 // Building Classes
 class Villain {
@@ -142,7 +143,12 @@ const startGameModal = () => {
 const closeStartGameModel = () => {
     modalStartGame.classList.remove("open");
     return yourName.value;
-
+};
+const startSecondRoundModal = () => {
+    secondRoundModal.classList.add("open");
+};
+const closeSecondRoundModal = () => {
+    secondRoundModal.classList.remove("open");
 };
 
 window.onload = () => {
@@ -168,6 +174,7 @@ const fireBlast = () => {
         villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[0]();
         if (villainsArr[0].health <= 0) {
             alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
+            startSecondRoundModal();
             return villainHealthNumber.innerHTML = 0;
         }
           if (hero1.health > 3) {
@@ -175,7 +182,8 @@ const fireBlast = () => {
               villainsArr[0].attack();
           }
     }else{
-        alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
+        alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!");
+        startSecondRoundModal();
         return villainHealthNumber.innerHTML = 0;
     }
     setTimeout(()=> {
@@ -215,10 +223,24 @@ const tsunami = () => {
      }, 1000);
 };
 
-
+// const roundTwoStart = () => {
+//     backgroundImages.shift();
+//     villainsArr.shift();
+//     return backgroundImages
+// };
 // EVENT LISTENERS
 startGameButton.addEventListener("click", startGame);
 fireblastButton.addEventListener("click",fireBlast);
 whirlWindButton.addEventListener("click", whirlWind);
 tsunamiButton.addEventListener("click", tsunami);
 modalStartGameButton.addEventListener("click", closeStartGameModel);
+secondRoundButton.addEventListener("click", closeSecondRoundModal);
+// secondRoundButton.addEventListener("click", need to make/ roundTwoStart)
+
+
+// function switch to round 2
+// background must be change. Shift()
+// villain image, name, and health must be change. shift()
+// Health must update to new round
+// 
+
