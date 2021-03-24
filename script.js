@@ -8,6 +8,10 @@ const heroHealthNumber = document.querySelector(".hero-health-strength");
 const fireball = document.querySelector(".fireball");
 const whirlWindGif = document.querySelector(".wind-gif");
 const waterGif = document.querySelector(".water-gif");
+const modalStartGame = document.querySelector(".start-game-modal");
+const modalStartGameButton = document.querySelector(".start-game-modal button");
+
+
 // Building Classes
 class Villain {
     constructor(name, h, i) {
@@ -112,6 +116,20 @@ const hero1 = new Hero("Drew");
 
 // const gameActive = true;
 
+
+//MODAL FUNCTIONS
+const startGameModal = () => {
+    modalStartGame.classList.add("open");
+};
+const closeStartGameModel = () => {
+    modalStartGame.classList.remove("open");
+};
+
+window.onload = () => {
+    startGameModal();
+  };
+
+
 // GAME FUNCTIONS
 const startGame = () => {
     villainHealthNumber.innerHTML = villainsArr[0].health;
@@ -164,3 +182,4 @@ startGameButton.addEventListener("click", startGame);
 fireblastButton.addEventListener("click",fireBlast);
 whirlWindButton.addEventListener("click", whirlWind);
 tsunamiButton.addEventListener("click", tsunami);
+modalStartGameButton.addEventListener("click", closeStartGameModel);
