@@ -1,3 +1,17 @@
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+    20% {
+        opacity: 1;
+
+    }
+    100% {
+        transform: translate(-200rem);
+    }
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -29,7 +43,7 @@
 
 button {
     padding: .5rem;
-    margin: 1rem 8rem;
+    margin: 1.5rem 8rem 1rem 8rem;
     font-size: 1.5rem;
     font-weight: 900;
     border: 2px solid black;
@@ -71,8 +85,30 @@ button {
     width: auto;
     transform: rotate(180deg);
     position: fixed;
-    right: 5rem;
+    right: 15rem;
     bottom: 20rem;
+    animation: moveInRight 7s;
+    display: none;
+}
+
+.wind-gif {
+    height: 15rem;
+    width: auto;
+    position: fixed;
+    right: 15rem;
+    bottom: 20rem;
+    animation: moveInRight 7s;
+    display: none;
+}
+
+.water-gif {
+    height: 15rem;
+    width: auto;
+    position: fixed;
+    right: 15rem;
+    bottom: 20rem;
+    animation: moveInRight 7s;
+    display: none;
 }
 
 .health-display {
@@ -87,16 +123,33 @@ button {
 display: flexbox;
 }
 
+.hero-health {
+    display: flexbox;
+}
+
 .villian-health-stats {
-    color: ghostwhite;
+    display: flex;
+}
+
+.hero-health-stats {
+    display: flex;
 }
 
 .label-villian-strength {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    color: ghostwhite;
 }
 
-.hero-health {
-display: flexbox;
+.label-hero-strength {
+    font-size: 1.5rem;
+    color: ghostwhite;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    color: ghostwhite;
+    text-align: center;
 }
 
 h3 {
@@ -112,5 +165,16 @@ h3 {
     width: 25rem;
     background: red;
     margin: auto;
+}
+
+.attack-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-attack {
+    display: flexbox;
+    margin: 1.5rem .5rem 0 .5rem;
+    background: rgb(25, 103, 139);
 }
 
