@@ -16,14 +16,14 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    border: 1px solid #5d5d5d;
+    /* border: 1px solid #5d5d5d; */
     font-size: 10px;
 }
 
 .heading {
     display: flexbox;
     font-family: 'Chango', cursive;
-    background-image: linear-gradient(to bottom, rgb(243, 220, 87), #724000fb);
+    background-image: linear-gradient(to bottom, rgb(43, 64, 88), #8d5001fb);
     height: 15vh;
     width: auto;
 }
@@ -50,16 +50,17 @@ button {
     border-radius: 10px;
     background: rgb(32, 42, 42);
     color: ghostwhite;
+    cursor: pointer;
 }
 
 .game-zone {
     display: flex;
     height: 70vh;
     width: auto;
-    background: url("https://images.pexels.com/photos/440731/pexels-photo-440731.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background: url("png/Battleground3.png");
     background-size: cover;
-    background-position: bottom;
-    margin: auto;
+    background-position: center;
+    margin: auto; 
 }
 
 .start-game-modal {
@@ -67,8 +68,8 @@ button {
     display: flexbox;
     position: fixed;
     padding: 2rem;
-    height: 40rem;
-    width: 60rem;
+    height: 30rem;
+    width: 50rem;
     text-align: center;
     top: 40%;
     transform: translateY(-50%);
@@ -76,6 +77,32 @@ button {
     right: 0;
     margin: 0 auto;
     display: none;
+    border: 2px solid black;
+    background-image: linear-gradient(to top, rgb(67, 89, 110), #1b1c2cfb);
+    z-index: 10;
+}
+
+.start-game-modal p {
+    font-size: 1.6rem;
+    color: ghostwhite;
+}
+
+.start-game-modal h6 {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+    background: #b66d0dfb;
+}
+
+.start-game-modal div {
+    margin-top: 2rem;
+    display: flexbox;
+    justify-content: center;
+}
+
+.start-game-modal input {
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem;
+    display: flexbox;
 }
 
 .start-game-modal.open {
@@ -103,14 +130,14 @@ button {
     margin: 1rem 2rem;
 }
 
-.bunny {
-    display: flex;
+.villain-image {
     height: 25rem;
+    display: none;
 }
 
 .your-fighter {
-    display: flex;
     height: 25rem;
+    display: none;
 }
 
 .fireball {
@@ -120,7 +147,7 @@ button {
     position: fixed;
     right: 15rem;
     bottom: 20rem;
-    animation: moveInRight 7s;
+    animation: moveInRight 2.5s;
     display: none;
 }
 
@@ -130,7 +157,7 @@ button {
     position: fixed;
     right: 15rem;
     bottom: 20rem;
-    animation: moveInRight 7s;
+    animation: moveInRight 2.5s;
     display: none;
 }
 
@@ -140,7 +167,7 @@ button {
     position: fixed;
     right: 15rem;
     bottom: 20rem;
-    animation: moveInRight 7s;
+    animation: moveInRight 2.5s;
     display: none;
 }
 
@@ -152,13 +179,6 @@ button {
     background-image: linear-gradient(to top, rgb(13, 14, 15), #323353fb);
     justify-content: space-between;
 }
-.villian-health {
-display: flexbox;
-}
-
-.hero-health {
-    display: flexbox;
-}
 
 .villian-health-stats {
     display: flex;
@@ -169,17 +189,17 @@ display: flexbox;
 }
 
 .label-villian-strength {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: ghostwhite;
 }
 
 .label-hero-strength {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: ghostwhite;
 }
 
 h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-left: 1rem;
     color: ghostwhite;
     text-align: center;
@@ -201,8 +221,9 @@ h3 {
 }
 
 .attack-button-container {
-    display: flex;
     align-items: center;
+    margin-top: 2rem;
+    /* display: none; */
 }
 
 .button-attack {
@@ -211,3 +232,23 @@ h3 {
     background: rgb(25, 103, 139);
 }
 
+.villain-name {
+    font-size: 2.5rem;
+    color: ghostwhite;
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+.save-the-world {
+    height: 4rem;
+    width: 50rem;
+    font-size: 3.5rem;
+    position: fixed;
+    text-align: center;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: ghostwhite;
+}

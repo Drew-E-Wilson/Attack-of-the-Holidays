@@ -10,6 +10,17 @@ const whirlWindGif = document.querySelector(".wind-gif");
 const waterGif = document.querySelector(".water-gif");
 const modalStartGame = document.querySelector(".start-game-modal");
 const modalStartGameButton = document.querySelector(".start-game-modal button");
+const villainName = document.querySelector(".villain-name");
+const yourName = document.querySelector(".your-name");
+const insertPlayerName = document.querySelector(".player-name");
+const gameZone = document.querySelector(".game-zone");
+const healthDesplay = document.querySelector(".health-display");
+const villainImage = document.querySelector(".villain-image");
+const playerImage = document.querySelector(".your-fighter");
+const villainHealthGroup = document.querySelector(".villain-health");
+const heroHealthGroup = document.querySelector(".hero-health");
+const buttonGroup = document.querySelector(".attack-button-container");
+const letsBeginText = document.querySelector(".save-the-world");
 
 
 // Building Classes
@@ -72,6 +83,13 @@ console.log(easterBunny);
 console.log(leprechaun);
 console.log(santa);
 
+// villain Image Array, will shift() array when new round starts;
+const VillainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif"]
+
+
+// Background Images Array
+const backgroundImages = ["png/Battleground3.png", "png/City1.png", "png/BG_04.png"];
+
 // Hero Character Attacks
 const heroAttacks = [];
 
@@ -123,6 +141,8 @@ const startGameModal = () => {
 };
 const closeStartGameModel = () => {
     modalStartGame.classList.remove("open");
+    return yourName.value;
+
 };
 
 window.onload = () => {
@@ -133,20 +153,34 @@ window.onload = () => {
 // GAME FUNCTIONS
 const startGame = () => {
     villainHealthNumber.innerHTML = villainsArr[0].health;
-heroHealthNumber.innerHTML = hero1.health;
+    heroHealthNumber.innerHTML = hero1.health;
+    villainName.innerHTML = villainsArr[0].name;
+    villainImage.src = VillainGifs[0];
+    playerImage.style.display = "block";
+    villainImage.style.display = "block";
+    insertPlayerName.innerHTML = yourName.value;
+    letsBeginText.style.display = "none";
 }
 
 const fireBlast = () => {
     fireball.style.display = "block";
     if (villainsArr[0].health > 0){
         villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[0]();
+        if (villainsArr[0].health <= 0) {
+            alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
+            return villainHealthNumber.innerHTML = 0;
+        }
           if (hero1.health > 3) {
-              heroHealthNumber.innerHTML = hero1.health -= villainsArr[0].attack();
+              heroHealthNumber.innerHTML = hero1.health -= 
+              villainsArr[0].attack();
           }
     }else{
         alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
         return villainHealthNumber.innerHTML = 0;
     }
+    setTimeout(()=> {
+        fireball.style.display = "none";
+     }, 1000);
 };
 
 const whirlWind = () => {
@@ -160,6 +194,9 @@ const whirlWind = () => {
         alert("You killed the " + villainsArr[0].name + "! You blew away the cometition!")
         return villainHealthNumber.innerHTML = 0;
     }
+    setTimeout(()=> {
+        whirlWindGif.style.display = "none";
+     }, 1000);
 };
 
 const tsunami = () => {
@@ -173,8 +210,10 @@ const tsunami = () => {
         alert("You killed the " + villainsArr[0].name + "! You washed away the competition!")
         return villainHealthNumber.innerHTML = 0;
     }
+    setTimeout(()=> {
+        waterGif.style.display = "none";
+     }, 1000);
 };
-
 
 
 // EVENT LISTENERS
