@@ -85,7 +85,7 @@ console.log(leprechaun);
 console.log(santa);
 
 // villain Image Array, will shift() array when new round starts;
-const VillainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif"]
+const villainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif"]
 
 
 // Background Images Array
@@ -124,9 +124,10 @@ heroAttacks.push(hero_option_3_attack);
 
 //Creating Heros
 const hero1 = new Hero("Drew");
+const hero2 = new Hero("Cool Dan");
+const hero3 = new Hero("Pickles");
 
-
-
+const heroArray = [hero1, hero2, hero3];
 //GAME PLAY LOGIC
 
 //ROUND 1
@@ -134,6 +135,7 @@ const hero1 = new Hero("Drew");
 //Click "Start Game" button and stuff like Easter Bunny, Your Charcter, health bars and attack buttons all go from hidden to beinng shown. Just the background and top bars will be visable from the beginning. maybe a model too that explains the game slightly. Pressing the start button will get rid of the model and bring everything else onto screen. 
 
 // const gameActive = true;
+
 
 
 //MODAL FUNCTIONS
@@ -148,6 +150,7 @@ const startSecondRoundModal = () => {
     secondRoundModal.classList.add("open");
 };
 const closeSecondRoundModal = () => {
+    secondRoundGame();
     secondRoundModal.classList.remove("open");
 };
 
@@ -155,13 +158,45 @@ window.onload = () => {
     startGameModal();
   };
 
+const resetHeroHealth = () => {
+    return heroHealthNumber.innerHTML = 50;
+}
+
+// ROUND 2
+  const secondRoundGame = () => {
+    backgroundImages.shift();
+    villainsArr.shift();
+    villainGifs .shift();
+    heroArray.shift();
+    gameZone.style.backgroundImage = `url('${backgroundImages[0]}')`;
+    startGame();
+};
+heroArray[0];
+//Win Responses
+const winConditionFIre = () => {
+    alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
+    startSecondRoundModal();
+    return villainHealthNumber.innerHTML = 0;
+};
+
+const winConditionWind = () => {
+    alert("You killed the " + villainsArr[0].name + "! You blew away the cometition!");
+    startSecondRoundModal();
+    return villainHealthNumber.innerHTML = 0;
+};
+
+const winConditionTsunami = () => {
+    alert("You killed the " + villainsArr[0].name + "! You washed away the competition!");
+    startSecondRoundModal();
+    return villainHealthNumber.innerHTML = 0;
+};
 
 // GAME FUNCTIONS
 const startGame = () => {
     villainHealthNumber.innerHTML = villainsArr[0].health;
     heroHealthNumber.innerHTML = hero1.health;
     villainName.innerHTML = villainsArr[0].name;
-    villainImage.src = VillainGifs[0];
+    villainImage.src = villainGifs[0];
     playerImage.style.display = "block";
     villainImage.style.display = "block";
     insertPlayerName.innerHTML = yourName.value;
@@ -173,18 +208,14 @@ const fireBlast = () => {
     if (villainsArr[0].health > 0){
         villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[0]();
         if (villainsArr[0].health <= 0) {
-            alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
-            startSecondRoundModal();
-            return villainHealthNumber.innerHTML = 0;
+            winConditionFIre();
         }
           if (hero1.health > 3) {
               heroHealthNumber.innerHTML = hero1.health -= 
               villainsArr[0].attack();
           }
     }else{
-        alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!");
-        startSecondRoundModal();
-        return villainHealthNumber.innerHTML = 0;
+        winConditionFIre();
     }
     setTimeout(()=> {
         fireball.style.display = "none";
@@ -195,12 +226,14 @@ const whirlWind = () => {
     whirlWindGif.style.display = "block";
     if (villainsArr[0].health > 0){
         villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[1]();
+        if (villainsArr[0].health <= 0) {
+            winConditionWind();
+        }
             if (hero1.health > 3) {
               heroHealthNumber.innerHTML = hero1.health -= villainsArr[0].attack();
           }
     }else{
-        alert("You killed the " + villainsArr[0].name + "! You blew away the cometition!")
-        return villainHealthNumber.innerHTML = 0;
+        winConditionWind();
     }
     setTimeout(()=> {
         whirlWindGif.style.display = "none";
@@ -211,17 +244,20 @@ const tsunami = () => {
     waterGif.style.display = "block";
     if (villainsArr[0].health > 0){
         villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[2]();
+        if (villainsArr[0].health <= 0) {
+            winConditionTsunami();
+        }
             if (hero1.health > 3) {
               heroHealthNumber.innerHTML = hero1.health -= villainsArr[0].attack();
           }
     }else{
-        alert("You killed the " + villainsArr[0].name + "! You washed away the competition!")
-        return villainHealthNumber.innerHTML = 0;
+        winConditionTsunami();
     }
     setTimeout(()=> {
         waterGif.style.display = "none";
      }, 1000);
 };
+
 
 // const roundTwoStart = () => {
 //     backgroundImages.shift();
