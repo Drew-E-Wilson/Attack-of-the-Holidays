@@ -171,7 +171,7 @@ const resetHeroHealth = () => {
     gameZone.style.backgroundImage = `url('${backgroundImages[0]}')`;
     startGame();
 };
-heroArray[0];
+// heroArray[0];
 //Win Responses
 const winConditionFIre = () => {
     alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
@@ -194,7 +194,7 @@ const winConditionTsunami = () => {
 // GAME FUNCTIONS
 const startGame = () => {
     villainHealthNumber.innerHTML = villainsArr[0].health;
-    heroHealthNumber.innerHTML = hero1.health;
+    heroHealthNumber.innerHTML = heroArray[0].health;
     villainName.innerHTML = villainsArr[0].name;
     villainImage.src = villainGifs[0];
     playerImage.style.display = "block";
@@ -210,8 +210,8 @@ const fireBlast = () => {
         if (villainsArr[0].health <= 0) {
             winConditionFIre();
         }
-          if (hero1.health > 3) {
-              heroHealthNumber.innerHTML = hero1.health -= 
+          if (heroArray[0].health > 3) {
+              heroHealthNumber.innerHTML = heroArray[0].health -= 
               villainsArr[0].attack();
           }
     }else{
@@ -229,8 +229,8 @@ const whirlWind = () => {
         if (villainsArr[0].health <= 0) {
             winConditionWind();
         }
-            if (hero1.health > 3) {
-              heroHealthNumber.innerHTML = hero1.health -= villainsArr[0].attack();
+            if (heroArray[0].health > 3) {
+              heroHealthNumber.innerHTML = heroArray[0].health -= villainsArr[0].attack();
           }
     }else{
         winConditionWind();
@@ -247,8 +247,8 @@ const tsunami = () => {
         if (villainsArr[0].health <= 0) {
             winConditionTsunami();
         }
-            if (hero1.health > 3) {
-              heroHealthNumber.innerHTML = hero1.health -= villainsArr[0].attack();
+            if (heroArray[0].health > 3) {
+              heroHealthNumber.innerHTML = heroArray[0].health -= villainsArr[0].attack();
           }
     }else{
         winConditionTsunami();
