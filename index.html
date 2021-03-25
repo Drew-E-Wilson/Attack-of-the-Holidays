@@ -20,7 +20,7 @@
     <div class="game-zone">
         <div class="start-game-modal">
             <h6>Welcome Brave Warrior!</h6>
-            <p>We once believed in the magic and Lengends of the Easter Bunny, Tooth Fairy and other folklors. But as we grew up, we slowly started to write them off as myths and legends. We dismissed them and forgot about them... but let me tell you... they didnt forget about US.</p>
+            <p>We once believed in the magic and Lengends of the Easter Bunny, Tooth Fairy and other folklor. But as we grew up, we slowly started to write them off as myths and legends. We dismissed them and forgot about them... but let me tell you... they didnt forget about US.</p>
             <br>
             <p>The year is 2099 and these myths and legends have come out of hiding to take over the world and only YOU can stop them. Enter your name below and get ready for... ATTACK OF THE HOLIDAYS!</p>
                 <div>
@@ -35,7 +35,14 @@
                     <button>Next Round</button>
                 </div>
         </div>
-        <div class="third-round-modal"></div>
+        <div class="you-lost-modal">
+            <h6>Arg you lost!</h6>
+            <p>Dont dispare, you can still save the world!</p>
+                <div>
+                    <button>Continue?</button>
+                    <button class="quit">Quit?</button>
+                </div>
+        </div>
         <div class="player-container">
     <div class="save-the-world">Start game to save the World. . .</div>
             <div>
@@ -56,9 +63,9 @@
     <div class="health-display">
             <div class="villian-health">
                 <h3 class="villain-name"></h3>
-                <div class="health-bar villian"></div>
+                <progress id="villain-health" value="" max="40"></progress>
                 <div class="villian-health-stats">
-                    <div class="label-villian-strength">Health:</div>
+                    <div class="label-villian-strength">Attack Strength:</div>
                     <h4 class="villain-health-strength">0</h4>
                 </div>
             </div>
@@ -72,9 +79,9 @@
             </div>
             <div class="hero-health">
                 <h3 class="player-name"></h3>
-                <div class="health-bar hero"></div>
+                <progress id="hero-health" value="" max="40"></progress>
                 <div class="hero-health-stats">
-                    <div class="label-hero-strength">Health</div>
+                    <div class="label-hero-strength">Attack Strength:</div>
                     <h4 class="hero-health-strength">0</h4>
                 </div>
             </div>

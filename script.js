@@ -3,8 +3,8 @@ const startGameButton = document.querySelector(".button-start-game");
 const fireblastButton = document.querySelector("#fireblast");
 const whirlWindButton = document.querySelector("#whirl-wind");
 const tsunamiButton = document.querySelector("#tsunami");
-const villainHealthNumber = document.querySelector(".villain-health-strength")
-const heroHealthNumber = document.querySelector(".hero-health-strength");
+const villainAttackNumber = document.querySelector(".villain-health-strength")
+const heroAttackNumber = document.querySelector(".hero-health-strength");
 const fireball = document.querySelector(".fireball");
 const whirlWindGif = document.querySelector(".wind-gif");
 const waterGif = document.querySelector(".water-gif");
@@ -24,6 +24,11 @@ const letsBeginText = document.querySelector(".save-the-world");
 const secondRoundModal =document.querySelector(".second-round-modal");
 const secondRoundButton = document.querySelector(".second-round-modal button");
 const secondRoundModalText = document.querySelector(".second-round-modal p");
+const youLostModal = document.querySelector(".you-lost-modal");
+const youLostModalButton = document.querySelector(".you-lost-modal button");
+const youLostModalButtonQuit = document.querySelector(".quit");
+const villainHealthBar = document.getElementById("villain-health");
+const heroHealthBar = document.getElementById("hero-health");
 
 // Building Classes
 class Villain {
@@ -50,8 +55,8 @@ const villainAttacks = [];
 
 
 const level_1_boss_attack = () => {
-    const attack = [3.5];
-    let randomAttackStrength = attack[Math.floor(Math.random())]
+    const attack = [3];
+    let randomAttackStrength = attack[Math.floor(Math.random())];
     return randomAttackStrength;
 };
 villainAttacks.push(level_1_boss_attack);
@@ -64,15 +69,17 @@ const level_2_boss_attack = () => {
 villainAttacks.push(level_2_boss_attack);
 
 const level_3_boss_attack = () => {
-    const attack = [4,5,6];
+    const attack = [4,4.5,5];
     let randomAttackStrength = attack[Math.floor(Math.random()* 3)]
     return randomAttackStrength;
 };
 villainAttacks.push(level_3_boss_attack);
 
-
+console.log(level_1_boss_attack);
+console.log(level_2_boss_attack);
+console.log(level_3_boss_attack);
 // Villian Health Levels
-const villainHealth = [40,50,60];
+const villainHealth = [40,45,50];
 
 //Creating new Villains
 const easterBunny = new Villain("Easter Bunny", 0, 0);
@@ -86,17 +93,17 @@ console.log(leprechaun);
 console.log(santa);
 
 // villain Image Array, will shift() array when new round starts;
-const villainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif","https://media.giphy.com/media/qClaUBfi1fpTE6kuRD/giphy.gif"]
+const villainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif","https://media.giphy.com/media/9Z1GUKJ1Q5mlfIJb9Z/giphy.gif"]
 
 
 // Background Images Array
-const backgroundImages = ["png/Battleground3.png", "png/City1.png", "png/BG_04.png"];
+const backgroundImages = ["png/Battleground3.png", "png/City1.png", "png/BG_03.png"];
 
 // Hero Character Attacks
 const heroAttacks = [];
 
 const hero_option_1_attack = () => {
-    const attack = [3];
+    const attack = [3.5];
     let randomAttackStrength = attack[Math.floor(Math.random())]
     return randomAttackStrength;
 };
@@ -116,8 +123,8 @@ const hero_option_2_attack = () => {
 heroAttacks.push(hero_option_2_attack);
 
 const hero_option_3_attack = () => {
-    const attack = [0,1,2,3,4,5,6,7];
-    let randomAttackStrength = attack[Math.floor(Math.random()* 8)];
+    const attack = [2,3,4,5,6,7,8];
+    let randomAttackStrength = attack[Math.floor(Math.random()* 7)];
     return randomAttackStrength;
 };
 heroAttacks.push(hero_option_3_attack);
@@ -134,8 +141,6 @@ const heroArray = [hero1, hero2, hero3];
 //ROUND 1
 
 //Click "Start Game" button and stuff like Easter Bunny, Your Charcter, health bars and attack buttons all go from hidden to beinng shown. Just the background and top bars will be visable from the beginning. maybe a model too that explains the game slightly. Pressing the start button will get rid of the model and bring everything else onto screen. 
-
-// const gameActive = true;
 
 
 
@@ -156,13 +161,25 @@ const closeSecondRoundModal = () => {
     secondRoundModal.classList.remove("open");
 };
 
+const startLevelOverModal = () => {
+    youLostModal.classList.add("open");
+};
+
+const startLevelOverCloseModal = () => {
+    youLostModal.classList.remove("open");
+    villainsArr.unshift();
+    heroArray.unshift();
+    startGame();
+    // for restarting the level over
+};
+const quitGameModal = () => {
+    youLostModal.classList.remove("open");
+    //to end the game and reset to home screen
+};
+
 window.onload = () => {
     startGameModal();
   };
-
-const resetHeroHealth = () => {
-    return heroHealthNumber.innerHTML = 50;
-}
 
 // ROUND 2
   const secondRoundGame = () => {
@@ -170,51 +187,67 @@ const resetHeroHealth = () => {
     villainsArr.shift();
     villainGifs .shift();
     heroArray.shift();
+    villainHealthBar.value = villainsArr[0].health;
+    heroHealthBar.value = heroArray[0].health;
     gameZone.style.backgroundImage = `url('${backgroundImages[0]}')`;
     startGame();
 };
+// function switch to round 2
+// background must be change. Shift()
+// villain image, name, and health must be change. shift()
+// Health must update to new round
+
+
 // heroArray[0];
 //Win Responses
-const winConditionFIre = () => {
-    startSecondRoundModal();
-    return villainHealthNumber.innerHTML = 0;
-};
+// const winConditionFIre = () => {
+//     startSecondRoundModal();
+//     // return villainHealthNumber.innerHTML = 0;
+// };
 
-const winConditionWind = () => {
-    startSecondRoundModal();
-    return villainHealthNumber.innerHTML = 0;
-};
+// const winConditionWind = () => {
+//     startSecondRoundModal();
+//     // return villainHealthNumber.innerHTML = 0;
+// };
 
-const winConditionTsunami = () => {
-    startSecondRoundModal();
-    return villainHealthNumber.innerHTML = 0;
-};
+// const winConditionTsunami = () => {
+//     startSecondRoundModal();
+//     // return villainHealthNumber.innerHTML = 0;
+// };
+
 
 // GAME FUNCTIONS
+
+
 const startGame = () => {
-    villainHealthNumber.innerHTML = villainsArr[0].health;
-    heroHealthNumber.innerHTML = heroArray[0].health;
+    villainAttackNumber.innerHTML = villainsArr[0].attack();
+    heroAttackNumber.innerHTML = heroArray[0].health;
     villainName.innerHTML = villainsArr[0].name;
     villainImage.src = villainGifs[0];
     playerImage.style.display = "block";
     villainImage.style.display = "block";
     insertPlayerName.innerHTML = yourName.value;
     letsBeginText.style.display = "none";
+    villainHealthBar.value = villainsArr[0].health;
+    heroHealthBar.value = heroArray[0].health;
 }
 
 const fireBlast = () => {
     fireball.style.display = "block";
     if (villainsArr[0].health > 0){
-        villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[0]();
+        villainHealthBar.value = villainsArr[0].health -= heroAttacks[0]();
         if (villainsArr[0].health <= 0) {
-            winConditionFIre();
+            startSecondRoundModal();
         }
-          if (heroArray[0].health > 3) {
-              heroHealthNumber.innerHTML = heroArray[0].health -= 
+          if (heroArray[0].health > 0) {
+            heroHealthBar.value = heroArray[0].health -= 
               villainsArr[0].attack();
+              villainAttackNumber.innerHTML = villainsArr[0].attack();
+          } else {
+            startLevelOverModal();
           }
     }else{
-        winConditionFIre();
+        startSecondRoundModal();
     }
     setTimeout(()=> {
         fireball.style.display = "none";
@@ -224,15 +257,18 @@ const fireBlast = () => {
 const whirlWind = () => {
     whirlWindGif.style.display = "block";
     if (villainsArr[0].health > 0){
-        villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[1]();
+        villainHealthBar.value = villainsArr[0].health -= heroAttacks[1]();
         if (villainsArr[0].health <= 0) {
-            winConditionWind();
+            startSecondRoundModal();
         }
-            if (heroArray[0].health > 3) {
-              heroHealthNumber.innerHTML = heroArray[0].health -= villainsArr[0].attack();
+            if (heroArray[0].health > 0) {
+                heroHealthBar.value = heroArray[0].health -= villainsArr[0].attack();
+                villainAttackNumber.innerHTML = villainsArr[0].attack();
+            } else{
+            startLevelOverModal();
           }
     }else{
-        winConditionWind();
+        startSecondRoundModal();
     }
     setTimeout(()=> {
         whirlWindGif.style.display = "none";
@@ -242,15 +278,18 @@ const whirlWind = () => {
 const tsunami = () => {
     waterGif.style.display = "block";
     if (villainsArr[0].health > 0){
-        villainHealthNumber.innerHTML = villainsArr[0].health -= heroAttacks[2]();
+        villainHealthBar.value = villainsArr[0].health -= heroAttacks[2]();
         if (villainsArr[0].health <= 0) {
-            winConditionTsunami();
+            startSecondRoundModal();
         }
-            if (heroArray[0].health > 3) {
-              heroHealthNumber.innerHTML = heroArray[0].health -= villainsArr[0].attack();
-          }
+            if (heroArray[0].health > 0) {
+                heroHealthBar.value = heroArray[0].health -= villainsArr[0].attack();
+                villainAttackNumber.innerHTML = villainsArr[0].attack();
+            } else {
+                startLevelOverModal();
+            }
     }else{
-        winConditionTsunami();
+        startSecondRoundModal();
     }
     setTimeout(()=> {
         waterGif.style.display = "none";
@@ -266,11 +305,5 @@ tsunamiButton.addEventListener("click", tsunami);
 modalStartGameButton.addEventListener("click", closeStartGameModel);
 secondRoundButton.addEventListener("click", closeSecondRoundModal);
 // secondRoundButton.addEventListener("click", need to make/ roundTwoStart)
-
-
-// function switch to round 2
-// background must be change. Shift()
-// villain image, name, and health must be change. shift()
-// Health must update to new round
-// 
-
+youLostModalButton.addEventListener("click", startLevelOverCloseModal);
+youLostModalButtonQuit.addEventListener("click", quitGameModal);

@@ -125,7 +125,6 @@ button {
     margin: 0 auto;
     border: 2px solid black;
     background-image: linear-gradient(to top, rgb(67, 89, 110), #1b1c2cfb);
-    /* z-index: 1000; */
     display: none;
 }
 
@@ -150,6 +149,44 @@ button {
     display: block;
 }
 
+.you-lost-modal {
+    background: ghostwhite;
+    display: flexbox;
+    position: fixed;
+    padding: 2rem;
+    height: 18rem;
+    width: 35rem;
+    text-align: center;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: 2px solid black;
+    background-image: linear-gradient(to top, rgb(67, 89, 110), #1b1c2cfb);
+    display: none;
+}
+
+.you-lost-modal p {
+    font-size: 1.6rem;
+    color: ghostwhite;
+}
+
+.you-lost-modal h6 {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+    background: #b66d0dfb;
+}
+
+.you-lost-modal div {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.you-lost-modal.open {
+    display: block;
+}
 
 .player-container {
     display: flex;
@@ -241,12 +278,20 @@ h3 {
     text-align: center;
 }
 
-.health-bar {
+#villain-health {
     display: flexbox;
     height: 2rem;
     width: 25rem;
-    background: red;
-    margin: auto;
+    background: rgb(156, 33, 33);
+    margin-bottom: 1rem;
+}
+
+#hero-health {
+    display: flexbox;
+    height: 2rem;
+    width: 25rem;
+    background: rgb(156, 33, 33);
+    margin-bottom: 1rem;
 }
 
 .attack-button-container {
