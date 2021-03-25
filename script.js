@@ -23,6 +23,7 @@ const buttonGroup = document.querySelector(".attack-button-container");
 const letsBeginText = document.querySelector(".save-the-world");
 const secondRoundModal =document.querySelector(".second-round-modal");
 const secondRoundButton = document.querySelector(".second-round-modal button");
+const secondRoundModalText = document.querySelector(".second-round-modal p");
 
 // Building Classes
 class Villain {
@@ -85,7 +86,7 @@ console.log(leprechaun);
 console.log(santa);
 
 // villain Image Array, will shift() array when new round starts;
-const villainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif"]
+const villainGifs = ["https://media.giphy.com/media/TEd7HIkFK2cnWQxVTk/giphy.gif", "https://media.giphy.com/media/dCOtc4zJW2MOfiAp5Q/giphy.gif","https://media.giphy.com/media/qClaUBfi1fpTE6kuRD/giphy.gif"]
 
 
 // Background Images Array
@@ -148,6 +149,7 @@ const closeStartGameModel = () => {
 };
 const startSecondRoundModal = () => {
     secondRoundModal.classList.add("open");
+    secondRoundModalText.innerHTML = "You killed " + villainsArr[0].name + "! Now thats how you save the world!"
 };
 const closeSecondRoundModal = () => {
     secondRoundGame();
@@ -174,19 +176,16 @@ const resetHeroHealth = () => {
 // heroArray[0];
 //Win Responses
 const winConditionFIre = () => {
-    alert("You killed the " + villainsArr[0].name + "! Looks like that fireball blazed through them!")
     startSecondRoundModal();
     return villainHealthNumber.innerHTML = 0;
 };
 
 const winConditionWind = () => {
-    alert("You killed the " + villainsArr[0].name + "! You blew away the cometition!");
     startSecondRoundModal();
     return villainHealthNumber.innerHTML = 0;
 };
 
 const winConditionTsunami = () => {
-    alert("You killed the " + villainsArr[0].name + "! You washed away the competition!");
     startSecondRoundModal();
     return villainHealthNumber.innerHTML = 0;
 };
@@ -259,11 +258,6 @@ const tsunami = () => {
 };
 
 
-// const roundTwoStart = () => {
-//     backgroundImages.shift();
-//     villainsArr.shift();
-//     return backgroundImages
-// };
 // EVENT LISTENERS
 startGameButton.addEventListener("click", startGame);
 fireblastButton.addEventListener("click",fireBlast);
