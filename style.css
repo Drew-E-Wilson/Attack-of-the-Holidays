@@ -202,6 +202,41 @@ button {
     display: block;
 }
 
+.attack-stats-modal {
+    background: ghostwhite;
+    display: flexbox;
+    position: fixed;
+    padding: 2rem;
+    height: 18rem;
+    width: 35rem;
+    text-align: left;
+    top: 70%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: 2px solid black;
+    background-image: linear-gradient(to top, rgb(67, 89, 110), #1b1c2cfb);
+    display: none;
+}
+
+.attack-stats-modal p {
+    font-size: 1.6rem;
+    color: ghostwhite;
+    margin: 1rem 0;
+}
+
+.attack-stats-modal h6 {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+    background: #b66d0dfb;
+    text-align: center;
+}
+
+.attack-stats-modal.open {
+    display: block;
+}
+
 .player-container {
     display: flex;
     width: 100vw;
@@ -325,6 +360,20 @@ h3 {
     align-items: center;
     margin-top: 2rem;
     /* display: none; */
+}
+
+.info-attack-container{
+    display: flex;
+    justify-content: center;
+    margin-left: 5rem;
+}
+
+.info {
+    display: flex;
+    height: 2.5rem;
+    width: auto;
+    margin-left: 3rem;
+    cursor: pointer;
 }
 
 .button-attack {

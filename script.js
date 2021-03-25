@@ -30,6 +30,8 @@ const youLostModalButtonQuit = document.querySelector(".quit");
 const villainHealthBar = document.getElementById("villain-health");
 const heroHealthBar = document.getElementById("hero-health");
 const villainAttackGif = document.querySelector(".villain-attack-gif");
+const infoModalImgage = document.querySelector(".info");
+const infoModal = document.querySelector(".attack-stats-modal");
 
 // Building Classes
 class Villain {
@@ -177,12 +179,16 @@ const quitGameModal = () => {
     youLostModal.classList.remove("open");
     //to end the game and reset to home screen
 };
+//info modal
+const openInfoModal = () => {
+    infoModal.classList.toggle("open");
+};
 
 window.onload = () => {
     startGameModal();
   };
 
-// ROUND 2
+// Multiple Rounds
   const secondRoundGame = () => {
     backgroundImages.shift();
     villainsArr.shift();
@@ -328,7 +334,7 @@ secondRoundButton.addEventListener("click", closeSecondRoundModal);
 // secondRoundButton.addEventListener("click", need to make/ roundTwoStart)
 youLostModalButton.addEventListener("click", startLevelOverCloseModal);
 youLostModalButtonQuit.addEventListener("click", quitGameModal);
-
+infoModalImgage.addEventListener("click", openInfoModal);
 
 // STILL TO DO
 //Create a modal for beating santa and winner the game
