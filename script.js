@@ -215,13 +215,11 @@ window.onload = () => {
 //     // return villainHealthNumber.innerHTML = 0;
 // };
 
-
 // GAME FUNCTIONS
 
-
 const startGame = () => {
-    villainAttackNumber.innerHTML = villainsArr[0].attack();
-    heroAttackNumber.innerHTML = heroArray[0].health;
+    villainAttackNumber.innerHTML = 0;
+    heroAttackNumber.innerHTML = 0;
     villainName.innerHTML = villainsArr[0].name;
     villainImage.src = villainGifs[0];
     playerImage.style.display = "block";
@@ -236,12 +234,13 @@ const fireBlast = () => {
     fireball.style.display = "block";
     if (villainsArr[0].health > 0){
         villainHealthBar.value = villainsArr[0].health -= heroAttacks[0]();
+        heroAttackNumber.innerHTML = heroAttacks[0]();
         if (villainsArr[0].health <= 0) {
             startSecondRoundModal();
         }
           if (heroArray[0].health > 0) {
             heroHealthBar.value = heroArray[0].health -= 
-              villainsArr[0].attack();
+                villainsArr[0].attack()
               villainAttackNumber.innerHTML = villainsArr[0].attack();
           } else {
             startLevelOverModal();
@@ -258,11 +257,13 @@ const whirlWind = () => {
     whirlWindGif.style.display = "block";
     if (villainsArr[0].health > 0){
         villainHealthBar.value = villainsArr[0].health -= heroAttacks[1]();
+        heroAttackNumber.innerHTML = heroAttacks[1]();
         if (villainsArr[0].health <= 0) {
             startSecondRoundModal();
         }
             if (heroArray[0].health > 0) {
-                heroHealthBar.value = heroArray[0].health -= villainsArr[0].attack();
+                heroHealthBar.value = heroArray[0].health -= 
+                villainsArr[0].attack();
                 villainAttackNumber.innerHTML = villainsArr[0].attack();
             } else{
             startLevelOverModal();
@@ -279,6 +280,7 @@ const tsunami = () => {
     waterGif.style.display = "block";
     if (villainsArr[0].health > 0){
         villainHealthBar.value = villainsArr[0].health -= heroAttacks[2]();
+        heroAttackNumber.innerHTML = heroAttacks[2]();
         if (villainsArr[0].health <= 0) {
             startSecondRoundModal();
         }
@@ -295,7 +297,6 @@ const tsunami = () => {
         waterGif.style.display = "none";
      }, 1000);
 };
-
 
 // EVENT LISTENERS
 startGameButton.addEventListener("click", startGame);
