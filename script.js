@@ -29,6 +29,7 @@ const youLostModalButton = document.querySelector(".you-lost-modal button");
 const youLostModalButtonQuit = document.querySelector(".quit");
 const villainHealthBar = document.getElementById("villain-health");
 const heroHealthBar = document.getElementById("hero-health");
+const villainAttackGif = document.querySelector(".villain-attack-gif");
 
 // Building Classes
 class Villain {
@@ -45,7 +46,7 @@ class Villain {
 class Hero {
     constructor (name, i) {
         this.name = name;
-        this.health = 50;
+        this.health = 40;
         this.attack = heroAttacks[i]; 
     }
 }
@@ -79,7 +80,7 @@ console.log(level_1_boss_attack);
 console.log(level_2_boss_attack);
 console.log(level_3_boss_attack);
 // Villian Health Levels
-const villainHealth = [40,45,50];
+const villainHealth = [40,40,40];
 
 //Creating new Villains
 const easterBunny = new Villain("Easter Bunny", 0, 0);
@@ -103,7 +104,7 @@ const backgroundImages = ["png/Battleground3.png", "png/City1.png", "png/BG_03.p
 const heroAttacks = [];
 
 const hero_option_1_attack = () => {
-    const attack = [3.5];
+    const attack = [3];
     let randomAttackStrength = attack[Math.floor(Math.random())]
     return randomAttackStrength;
 };
@@ -113,7 +114,7 @@ const hero_option_2_attack = () => {
     const attack = [5];
     let randomAttackStrength = attack[Math.floor(Math.random())];
     let accuracy = Math.random();
-        if(accuracy < .7) {
+        if(accuracy <= .75) {
             return randomAttackStrength
         } else {
             alert("you missed!")
@@ -123,8 +124,8 @@ const hero_option_2_attack = () => {
 heroAttacks.push(hero_option_2_attack);
 
 const hero_option_3_attack = () => {
-    const attack = [2,3,4,5,6,7,8];
-    let randomAttackStrength = attack[Math.floor(Math.random()* 7)];
+    const attack = [0,1,2,3,4,5,6,7];
+    let randomAttackStrength = attack[Math.floor(Math.random()* 8)];
     return randomAttackStrength;
 };
 heroAttacks.push(hero_option_3_attack);
@@ -239,8 +240,14 @@ const fireBlast = () => {
             startSecondRoundModal();
         }
           if (heroArray[0].health > 0) {
-            heroHealthBar.value = heroArray[0].health -= 
-                villainsArr[0].attack()
+            setTimeout(()=> {
+                villainAttackGif.style.display = "block";
+                heroHealthBar.value = heroArray[0].health -= 
+                        villainsArr[0].attack();
+             }, 1200);
+             setTimeout(()=> {
+                villainAttackGif.style.display = "none";
+             }, 2200);
               villainAttackNumber.innerHTML = villainsArr[0].attack();
           } else {
             startLevelOverModal();
@@ -262,9 +269,15 @@ const whirlWind = () => {
             startSecondRoundModal();
         }
             if (heroArray[0].health > 0) {
-                heroHealthBar.value = heroArray[0].health -= 
-                villainsArr[0].attack();
+                setTimeout(()=> {
+                    villainAttackGif.style.display = "block";
+                    heroHealthBar.value = heroArray[0].health -= 
+                            villainsArr[0].attack();
+                 }, 1200);
                 villainAttackNumber.innerHTML = villainsArr[0].attack();
+                setTimeout(()=> {
+                    villainAttackGif.style.display = "none";
+                 }, 2200);
             } else{
             startLevelOverModal();
           }
@@ -285,8 +298,15 @@ const tsunami = () => {
             startSecondRoundModal();
         }
             if (heroArray[0].health > 0) {
-                heroHealthBar.value = heroArray[0].health -= villainsArr[0].attack();
+                setTimeout(()=> {
+                    villainAttackGif.style.display = "block";
+                    heroHealthBar.value = heroArray[0].health -= 
+                            villainsArr[0].attack();
+                 }, 1200);
                 villainAttackNumber.innerHTML = villainsArr[0].attack();
+                setTimeout(()=> {
+                    villainAttackGif.style.display = "none";
+                 }, 2200);
             } else {
                 startLevelOverModal();
             }
@@ -308,3 +328,10 @@ secondRoundButton.addEventListener("click", closeSecondRoundModal);
 // secondRoundButton.addEventListener("click", need to make/ roundTwoStart)
 youLostModalButton.addEventListener("click", startLevelOverCloseModal);
 youLostModalButtonQuit.addEventListener("click", quitGameModal);
+
+
+// STILL TO DO
+//Create a modal for beating santa and winner the game
+//create a modal with toggle saying your attack button strengths
+//make each round replayable with the modal "continue?" button
+//make they game resart from begging with "restart" button

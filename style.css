@@ -12,6 +12,20 @@
     }
 }
 
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    20% {
+        opacity: 1;
+
+    }
+    100% {
+        transform: translate(200rem);
+    }
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -197,12 +211,22 @@ button {
 }
 
 .villain-image {
-    height: 25rem;
+    height: 27rem;
     display: none;
 }
 
 .your-fighter {
-    height: 25rem;
+    height: 27rem;
+    display: none;
+}
+
+.villain-attack-gif {
+    height: 15rem;
+    width: auto;
+    position: fixed;
+    left: 15rem;
+    bottom: 15rem;
+    animation: moveInLeft 2.5s;
     display: none;
 }
 
@@ -256,6 +280,7 @@ button {
 
 .label-villian-strength {
     font-size: 2rem;
+    margin-left: 1rem;
     color: ghostwhite;
 }
 
@@ -284,6 +309,7 @@ h3 {
     width: 25rem;
     background: rgb(156, 33, 33);
     margin-bottom: 1rem;
+    margin-left: 1rem;
 }
 
 #hero-health {
@@ -292,6 +318,7 @@ h3 {
     width: 25rem;
     background: rgb(156, 33, 33);
     margin-bottom: 1rem;
+    margin-right: 1rem;
 }
 
 .attack-button-container {
@@ -314,9 +341,10 @@ h3 {
 }
 
 .save-the-world {
-    height: 4rem;
+    height: 5rem;
     width: 50rem;
     font-size: 3.5rem;
+    font-weight: 600;
     position: fixed;
     text-align: center;
     top: 40%;
@@ -325,4 +353,5 @@ h3 {
     right: 0;
     margin: 0 auto;
     background: ghostwhite;
+    border: 2px solid black;
 }
