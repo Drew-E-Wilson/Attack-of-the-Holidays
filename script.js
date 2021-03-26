@@ -130,12 +130,11 @@ const hero_option_2_attack = () => {
 heroAttacks.push(hero_option_2_attack);
 
 const hero_option_3_attack = () => {
-    const attack = [0,1,2,3,4,5,6,7];
-    let randomAttackStrength = attack[Math.floor(Math.random()* 8)];
+    const attack = [1,2,3,4,5,6,7];
+    let randomAttackStrength = attack[Math.floor(Math.random()* 7)];
     return randomAttackStrength;
 };
 heroAttacks.push(hero_option_3_attack);
-
 
 //Creating Heros
 const hero1 = new Hero("Drew");
@@ -315,8 +314,11 @@ const whirlWind = () => {
 const tsunami = () => {
     waterGif.style.display = "block";
     if (villainsArr[0].health > 0){
-        villainHealthBar.value = villainsArr[0].health -= heroAttacks[2]();
-        heroAttackNumber.innerHTML = heroAttacks[2]();
+        let tsumaniDamage = heroAttacks[2]();
+        villainHealthBar.value = villainsArr[0].health -= tsumaniDamage;
+        heroAttackNumber.innerHTML = tsumaniDamage;
+        console.log(heroAttacks[2]());
+        console.log(heroAttacks[2]());
         if (villainsArr[0].health <= 0 && villainsArr[0].name === "Santa"){
             openWonGameModal();
         }
