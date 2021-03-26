@@ -24,12 +24,14 @@ The year is 2099 and these myths and legends have come out of hiding to take ove
 
 ####Code snippets:
 <img src="png/code_snippet_1.png">
+######
 I'm proud of this code snippet because it integrated an image reavealing itself with an animation, updating a progress bar and delaying an enemy attack until the players attack and animation finished. 
 ##
 <img src="png/code_snippet_2.png">
+######
 This code is what I used to create the different attack strengths for the player attack buttons. I enjoyed using different techniques for each such as picking a raondom number from an array or giving the attack accuracy. 
-##
-####What I Would Add:
+###
+####What I would add:
  I would like to add more player options to chose from at the home screen. Each character would have different health and attack levels. I would also like to create options for difficulty levels. Adding an easy, medium, or hard which would increase the health and attack strength of the enemies. Finally I would like to design this game so you could vs other people online instead of just the computer.
 
 
