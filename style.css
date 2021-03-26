@@ -30,7 +30,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /* border: 1px solid #5d5d5d; */
     font-size: 10px;
 }
 
@@ -276,7 +275,6 @@ button {
     display: block;
 }
 
-
 .player-container {
     display: flex;
     width: 100vw;
@@ -416,8 +414,27 @@ h3 {
     cursor: pointer;
 }
 
+#fireblast {
+    display: flex;
+    display: none;
+}
+   
+#whirl-wind {
+    display: flex;
+    display: none;
+}
+   
+#tsunami {
+    display: flex;
+    display: none;
+}
+
+.button-wrap {
+    display: flex;
+}
+
 .button-attack {
-    display: flexbox;
+    display: flex;
     margin: 1.5rem .5rem 0 .5rem;
     background: rgb(25, 103, 139);
 }

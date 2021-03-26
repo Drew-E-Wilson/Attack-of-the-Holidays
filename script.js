@@ -33,6 +33,9 @@ const villainAttackGif = document.querySelector(".villain-attack-gif");
 const infoModalImgage = document.querySelector(".info");
 const infoModal = document.querySelector(".attack-stats-modal");
 const wonGameModal = document.querySelector(".won-game-modal");
+const buttonFireblast = document.querySelector("#fireblast");
+const buttonWhirlWind = document.querySelector("#whirl-wind");
+const buttonTsunami = document.querySelector("#tsunami");
 
 // Building Classes
 class Villain {
@@ -237,6 +240,9 @@ const startGame = () => {
     villainImage.src = villainGifs[0];
     playerImage.style.display = "block";
     villainImage.style.display = "block";
+    buttonFireblast.style.display = "flex";
+    buttonWhirlWind.style.display = "flex";
+    buttonTsunami.style.display = "flex";
     insertPlayerName.innerHTML = yourName.value;
     letsBeginText.style.display = "none";
     villainHealthBar.value = villainsArr[0].health;
