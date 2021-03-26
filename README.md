@@ -37,3 +37,4 @@ This code is what I used to create the different attack strengths for the player
 Currently if you lose a round, you have to restart the game from the beginning. I would like to add a function that would allow you to restart from the beginning of each level if you lose.
 
 ### Thanks for checking out my game!
+#####- Drew Wilson
