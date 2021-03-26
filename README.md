@@ -24,17 +24,15 @@ Game link: https://drew-e-wilson.github.io/Attack-of-the-Holidays/
 * Modals
 
 #### Code snippets:
+##### I'm proud of this code snippet because it integrated an image reavealing itself with an animation, updating a progress bar and delaying an enemy attack until the players attack and animation finished.
 <img src="png/code_snippet_1.png">
 
-##### I'm proud of this code snippet because it integrated an image reavealing itself with an animation, updating a progress bar and delaying an enemy attack until the players attack and animation finished. 
+ ##### This code is what I used to create the different attack strengths for the player attack buttons. I enjoyed using different techniques for each such as picking a raondom number from an array or giving the attack accuracy.
 
-<img src="png/code_snippet_2.png">
-
-##### This code is what I used to create the different attack strengths for the player attack buttons. I enjoyed using different techniques for each such as picking a raondom number from an array or giving the attack accuracy. 
+<img src="png/code_snippet_2.png"> 
 
 #### What I would add:
  I would like to add more player options to chose from at the home screen. Each character would have different health and attack levels. I would also like to create options for difficulty levels. Adding an easy, medium, or hard which would increase the health and attack strength of the enemies. Finally I would like to design this game so you could vs other people online instead of just the computer.
-
 
 #### What I would change:
 Currently if you lose a round, you have to restart the game from the beginning. I would like to add a function that would allow you to restart from the beginning of each level if you lose.
