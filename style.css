@@ -79,6 +79,7 @@ button {
 .start-game-modal {
     background: ghostwhite;
     display: flexbox;
+    justify-content: center;
     position: fixed;
     padding: 2rem;
     height: 30rem;
@@ -121,6 +122,10 @@ button {
 
 .start-game-modal.open {
     display: block;
+}
+
+.input-first-modal {
+    margin-left: 3.2rem;
 }
 
 .second-round-modal{
