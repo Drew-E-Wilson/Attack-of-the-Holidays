@@ -150,7 +150,6 @@ const heroArray = [hero1, hero2, hero3];
 //Click "Start Game" button and stuff like Easter Bunny, Your Charcter, health bars and attack buttons all go from hidden to beinng shown. Just the background and top bars will be visable from the beginning. maybe a model too that explains the game slightly. Pressing the start button will get rid of the model and bring everything else onto screen. 
 
 
-
 //MODAL FUNCTIONS
 const startGameModal = () => {
     modalStartGame.classList.add("open");
