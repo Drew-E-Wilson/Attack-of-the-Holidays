@@ -11,8 +11,8 @@ Game link: https://drew-e-wilson.github.io/Attack-of-the-Holidays/
  
 #### Technologies used:
 * JavaScript - 48.7%
-* HTML - 30.5%
-* CSS - 20.8%
+* CSS - 30.5%
+* HTML - 20.8%
 * Node
 * Visual Studio Code
 
