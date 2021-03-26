@@ -32,6 +32,7 @@ const heroHealthBar = document.getElementById("hero-health");
 const villainAttackGif = document.querySelector(".villain-attack-gif");
 const infoModalImgage = document.querySelector(".info");
 const infoModal = document.querySelector(".attack-stats-modal");
+const wonGameModal = document.querySelector(".won-game-modal");
 
 // Building Classes
 class Villain {
@@ -184,6 +185,11 @@ const openInfoModal = () => {
     infoModal.classList.toggle("open");
 };
 
+//Won Game Modal Reset
+const openWonGameModal = () => {
+    wonGameModal.classList.add("open");
+};
+
 window.onload = () => {
     startGameModal();
   };
@@ -242,6 +248,9 @@ const fireBlast = () => {
     if (villainsArr[0].health > 0){
         villainHealthBar.value = villainsArr[0].health -= heroAttacks[0]();
         heroAttackNumber.innerHTML = heroAttacks[0]();
+        if (villainsArr[0].health <= 0 && villainsArr[0].name === "Santa"){
+            openWonGameModal();
+        }
         if (villainsArr[0].health <= 0) {
             startSecondRoundModal();
         }
@@ -271,6 +280,9 @@ const whirlWind = () => {
     if (villainsArr[0].health > 0){
         villainHealthBar.value = villainsArr[0].health -= heroAttacks[1]();
         heroAttackNumber.innerHTML = heroAttacks[1]();
+        if (villainsArr[0].health <= 0 && villainsArr[0].name === "Santa"){
+            openWonGameModal();
+        }
         if (villainsArr[0].health <= 0) {
             startSecondRoundModal();
         }
@@ -300,22 +312,25 @@ const tsunami = () => {
     if (villainsArr[0].health > 0){
         villainHealthBar.value = villainsArr[0].health -= heroAttacks[2]();
         heroAttackNumber.innerHTML = heroAttacks[2]();
-        if (villainsArr[0].health <= 0) {
-            startSecondRoundModal();
+        if (villainsArr[0].health <= 0 && villainsArr[0].name === "Santa"){
+            openWonGameModal();
         }
-            if (heroArray[0].health > 0) {
-                setTimeout(()=> {
-                    villainAttackGif.style.display = "block";
-                    heroHealthBar.value = heroArray[0].health -= 
-                            villainsArr[0].attack();
-                 }, 1200);
-                villainAttackNumber.innerHTML = villainsArr[0].attack();
-                setTimeout(()=> {
-                    villainAttackGif.style.display = "none";
-                 }, 2200);
-            } else {
-                startLevelOverModal();
+            if (villainsArr[0].health <= 0) {
+            startSecondRoundModal();
             }
+                if (heroArray[0].health > 0) {
+                    setTimeout(()=> {
+                        villainAttackGif.style.display = "block";
+                         heroHealthBar.value = heroArray[0].health -= 
+                            villainsArr[0].attack();
+                    }, 1200);
+                    villainAttackNumber.innerHTML = villainsArr[0].attack();
+                    setTimeout(()=> {
+                        villainAttackGif.style.display = "none";
+                    }, 2200);
+                 } else {
+                   startLevelOverModal();
+                }
     }else{
         startSecondRoundModal();
     }
